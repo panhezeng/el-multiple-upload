@@ -1,0 +1,67 @@
+{
+  "name": "@panhezeng/el-multiple-upload",
+  "description": "A Vue component",
+  "version": "1.0.0",
+  "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "vuejs",
+    "vue component",
+    "element-ui",
+    "upload",
+    "multiple upload"
+  ],
+  "homepage": "https://github.com/panhezeng/el-multiple-upload.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panhezeng/el-multiple-upload.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "README"
+  ],
+  "main": "dist/el-multiple-upload.min.js",
+  "scripts": {
+    "dev:example": "webpack-dev-server --mode development --open --hot --config webpack.example.config.js",
+    "build:example": "webpack --mode production --config webpack.example.config.js",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "@panhezeng/el-popover-dialog": "latest",
+    "@panhezeng/ucloud-ufile": "latest",
+    "@panhezeng/utils": "latest",
+    "element-ui": "latest",
+    "vue": "latest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@panhezeng/before-run-webpack-plugin": "latest",
+    "babel-loader": "^8.0.0",
+    "css-loader": "latest",
+    "file-loader": "^1.1.4",
+    "less": "^3.8.1",
+    "less-loader": "^4.1.0",
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.1",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "latest",
+    "webpack": "^4.17.1",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "^3.1.7"
+  },
+  "engines": {
+    "node": ">= 8.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
