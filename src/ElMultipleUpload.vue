@@ -5,6 +5,7 @@
              :http-request="requestUpload"
              :on-success="successUpload"
              :on-remove="removeUpload"
+             :on-preview="onPreview||previewUpload"
              :accept="type&&`${type}/*`"
              :drag="drag"
              multiple
@@ -66,7 +67,9 @@
       defaultElement: {
         type: Boolean,
         default: true
-      }
+      },
+      // 点击文件列表中已上传的文件时的钩子函数, 默认是打开窗口
+      onPreview: Function
     },
     data () {
       return {
@@ -110,6 +113,9 @@
       removeUpload (file, fileList) {
         this.elFileList = fileList
         this.$emit('update:fileList', fileList)
+      },
+      previewUpload (file) {
+        window.open(file.url)
       }
     }
   }

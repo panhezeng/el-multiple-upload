@@ -57,12 +57,44 @@ export default {
         type: Boolean,
         default: true
       },
-      // 在上传区域显示默认元素
+      // 是否在上传区域显示默认元素
       defaultElement: {
         type: Boolean,
         default: true
-      }
+      },
+      // 点击文件列表中已上传的文件时的钩子函数, 默认是打开窗口
+      onPreview: Function
     },
+    methods: {
+      successUpload (response, file, fileList) {
+        this.elFileList = fileList
+        // 当没有文件处于准备或者上传中状态时, 即本次批量上传最后一次回调, 则同步数据
+        if (fileList.every(file => !(file.status === 'ready' || file.status === 'uploading'))) {
+          // 把上传成功的文件同步出去,并且只保留name和url, url替换成外网地址, uid和status在这里无法去除, 因为fileList同步后, el-upload组件又会watch并赋值这两属性, 如果后端要求去除, 则只能在最终表单提交时处理
+          this.$emit('update:fileList', fileList.reduce((accumulator, file) => {
+            if (file.status === 'success') {
+              if (file.response) {
+                accumulator.push({
+                  uid: file.uid,
+                  name: file.name,
+                  url: getObjectItemByPath(file.response, this.resPathOfUrl, file.url)
+                })
+              } else {
+                accumulator.push(file)
+              }
+            }
+            return accumulator
+          }, []))
+        }
+      },
+      removeUpload (file, fileList) {
+        this.elFileList = fileList
+        this.$emit('update:fileList', fileList)
+      },
+      previewUpload (file) {
+        window.open(file.url)
+      }
+    }
   }
 </script>
 ```
