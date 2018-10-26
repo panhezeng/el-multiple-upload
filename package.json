@@ -36,23 +36,23 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.1.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "@panhezeng/before-run-webpack-plugin": "latest",
-    "babel-loader": "^8.0.0",
+    "babel-loader": "^8.0.4",
     "css-loader": "latest",
     "file-loader": "^1.1.4",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
-    "url-loader": "^1.1.1",
-    "vue-loader": "^15.4.1",
+    "url-loader": "^1.1.2",
+    "vue-loader": "^15.4.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "latest",
-    "webpack": "^4.17.1",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "^3.1.7"
+    "webpack": "^4.23.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "engines": {
     "node": ">= 8.0.0",

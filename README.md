@@ -40,15 +40,14 @@ export default {
       },
       // 上传前检查方法，第一个参数是上传文件数据，第二个参数是内部检查结果，方法必须返回布尔值，不是必须，默认走内部checkUpload逻辑
       checkUpload: Function,
-      // 限制大小，单位KB, 默认-1, 即'image', 'audio', 'video'限制2048,51200,512000,其他文件无限制
+      // size 单位KB，默认undefined，文件使用默认限制大小，如果不限制大小则传0
       size: {
-        type: Number,
-        default: -1
+        type: Number
       },
       // 上传文件类型, 默认可上传所有类型
       type: {
         validator (value) {
-          return ['image', 'audio', 'video', 'text', 'application', ''].includes(value)
+          return value === '' || /^(image|audio|video|text|application|\.)/.test(value)
         },
         default: ''
       },
