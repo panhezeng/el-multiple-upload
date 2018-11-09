@@ -22,15 +22,15 @@
 
     return new Promise((resolve, reject) => {
 
-      ufile.PREFIX = `Items/11933/${file.type}`
+      ufile.PREFIX = `example/${file.type}`
 
       const success = (res) => {
         if (Object.prototype.toString.call(res) !== '[object Object]') {
-          res = {Key: file.name}
+          res = { Key: file.name }
         }
-        res.url = `http://digital.hammacher.com/${res.Key}`
+        res.url = `http://dummyimage.com/200x100/50B347/FFF&text=${res.Key}`
         console.log('success', res)
-        resolve({data: res})
+        resolve({ data: res })
       }
 
       const error = (res) => {

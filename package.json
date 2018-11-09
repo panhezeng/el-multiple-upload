@@ -47,12 +47,12 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "url-loader": "^1.1.2",
-    "vue-loader": "^15.4.2",
-    "vue-style-loader": "^4.1.2",
+    "vue-loader": "latest",
+    "vue-style-loader": "latest",
     "vue-template-compiler": "latest",
-    "webpack": "^4.23.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
   },
   "engines": {
     "node": ">= 8.0.0",
