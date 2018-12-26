@@ -50,7 +50,7 @@
       size: {
         type: Number
       },
-      // 上传文件类型, 默认可上传所有类型
+      // 上传文件类型，和HTML的input元素的accept属性一样，支持用逗号分隔的MIME类型或者.文件后缀名组成的字符串，默认空字符串，不限制类型
       type: {
         validator (value) {
           return value === '' || /^(image|audio|video|text|application|\.)/.test(value)
