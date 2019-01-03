@@ -117,10 +117,13 @@
             return accumulator
           }, []))
         }
+        this.$emit('success-upload', {response, file, fileList})
+        this.$emit('finish-upload')
       },
       removeUpload (file, fileList) {
         this.elFileList = fileList
         this.$emit('update:fileList', fileList)
+        this.$emit('remove-upload', { file, fileList})
       },
       previewUpload (file) {
         window.open(file.url)
