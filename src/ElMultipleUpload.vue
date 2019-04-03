@@ -48,10 +48,14 @@ export default {
       }
     },
     // 上传前检查方法，第一个参数是上传文件数据，第二个参数是内部检查结果，方法必须返回布尔值，不是必须，默认走内部checkUpload逻辑
-    checkUpload: Function,
+    checkUpload: {
+      type: Function,
+      default: undefined
+    },
     // size 单位KB，默认undefined，文件使用默认限制大小，如果不限制大小则传0
     size: {
-      type: Number
+      type: Number,
+      default: undefined
     },
     // 和HTML的input元素的accept属性一样，支持用逗号分隔的MIME类型或者.文件后缀名组成的字符串，默认空字符串，不限制类型
     accept: {
@@ -73,7 +77,10 @@ export default {
       default: true
     },
     // 点击文件列表中已上传的文件时的钩子函数, 默认是打开窗口
-    onPreview: Function
+    onPreview: {
+      type: Function,
+      default: undefined
+    }
   },
   data() {
     return {
@@ -98,8 +105,8 @@ export default {
       this.elFileList = fileList;
       // 当没有文件处于准备或者上传中状态时, 即本次批量上传最后一次回调, 则同步数据
       if (
-        fileList.every(
-          file => !(file.status === "ready" || file.status === "uploading")
+        !fileList.some(
+          file => file.status === "ready" || file.status === "uploading"
         )
       ) {
         // 把上传成功的文件同步出去,并且只保留name和url, url替换成外网地址, uid和status在这里无法去除, 因为fileList同步后, el-upload组件又会watch并赋值这两属性, 如果后端要求去除, 则只能在最终表单提交时处理
