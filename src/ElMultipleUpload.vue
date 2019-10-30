@@ -52,10 +52,22 @@ export default {
       type: Function,
       default: undefined
     },
-    // size 单位KB，默认undefined，文件使用默认限制大小，如果不限制大小则传0
-    size: {
-      type: Number,
-      default: undefined
+    // 图片类型宽度高度限制，默认不限制
+    imageDimensions: {
+      validator(value) {
+        return (
+          /^\[object Object\]$/.test(Object.prototype.toString.call(value)) &&
+          Object.prototype.hasOwnProperty.call(value, "width") &&
+          Object.prototype.hasOwnProperty.call(value, "height")
+        );
+      },
+      type: Object,
+      default() {
+        return {
+          width: undefined,
+          height: undefined
+        };
+      }
     },
     // 和HTML的input元素的accept属性一样，支持用逗号分隔的MIME类型或者.文件后缀名组成的字符串，默认空字符串，不限制类型
     accept: {
@@ -64,6 +76,7 @@ export default {
           value === "" || /^(image|audio|video|text|application|\.)/.test(value)
         );
       },
+      type: String,
       default: ""
     },
     // 拖拽上传
@@ -89,13 +102,29 @@ export default {
   },
   computed: {},
   methods: {
-    beforeUpload(rawFile) {
-      const result = checkUpload(rawFile, this.accept, this.size);
+    beforeUpload(file) {
+      // 开始上传后，不让编辑
+      this.$emit("file", file);
+      this.$emit("before-upload", file);
       if (this.checkUpload) {
-        return this.checkUpload(rawFile, result);
+        return this.checkUpload(file);
       } else {
-        if (result.message) Message.error(result.message);
-        return result.validate;
+        return new Promise(async (resolve, reject) => {
+          const result = await checkUpload(
+            file,
+            this.accept,
+            this.size,
+            this.imageDimensions.width,
+            this.imageDimensions.height
+          );
+          if (result.validation) {
+            resolve();
+          } else {
+            if (result.message) Message.error(result.message);
+            this.$emit("validation-error");
+            reject();
+          }
+        });
       }
     },
     requestUpload(option) {
