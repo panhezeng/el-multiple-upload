@@ -16,6 +16,8 @@
 
 修改了 output 方式，通过 require 或 window 方式使用，不需要加.default
 
+使用了 Promise, 请自行解决兼容性
+
 ```vue
 <script>
 export default {

@@ -108,7 +108,7 @@ export default {
       if (this.checkUpload) {
         return this.checkUpload(file);
       } else {
-        return new Promise(async (resolve, reject) => {
+        return new Promise((resolve, reject) => {
           checkUpload(
             file,
             this.accept,
