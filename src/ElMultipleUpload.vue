@@ -2,7 +2,6 @@
   <el-upload
     class="el-multiple-upload"
     ref="upload"
-    v-bind="$attrs"
     action=""
     :before-upload="beforeUpload"
     :http-request="requestUpload"
@@ -13,6 +12,7 @@
     :drag="drag"
     multiple
     :file-list="fileList"
+    v-bind="$attrs"
   >
     <div v-if="defaultElement">
       <i class="el-icon-upload"></i>
@@ -33,24 +33,24 @@ export default {
     // 上传文件的方法
     upload: {
       required: true,
-      type: Function
+      type: Function,
     },
     // 从上传方法返回对象中获取url的path
     resPathOfUrl: {
       type: String,
-      default: "data.url"
+      default: "data.url",
     },
     // 已上传文件数组
     fileList: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     // 上传前检查方法，第一个参数是上传文件数据，第二个参数是内部检查结果，方法必须返回布尔值，不是必须，默认走内部checkUpload逻辑
     checkUpload: {
       type: Function,
-      default: undefined
+      default: undefined,
     },
     // 图片类型宽度高度限制，默认不限制
     imageDimensions: {
@@ -65,9 +65,9 @@ export default {
       default() {
         return {
           width: undefined,
-          height: undefined
+          height: undefined,
         };
-      }
+      },
     },
     // 和HTML的input元素的accept属性一样，支持用逗号分隔的MIME类型或者.文件后缀名组成的字符串，默认空字符串，不限制类型
     accept: {
@@ -77,27 +77,27 @@ export default {
         );
       },
       type: String,
-      default: ""
+      default: "",
     },
     // 拖拽上传
     drag: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 是否在上传区域显示默认元素
     defaultElement: {
       type: Boolean,
-      default: true
+      default: true,
     },
     // 点击文件列表中已上传的文件时的钩子函数, 默认是打开窗口
     onPreview: {
       type: Function,
-      default: undefined
-    }
+      default: undefined,
+    },
   },
   data() {
     return {
-      elFileList: []
+      elFileList: [],
     };
   },
   computed: {},
@@ -115,7 +115,7 @@ export default {
             this.size,
             this.imageDimensions.width,
             this.imageDimensions.height
-          ).then(result => {
+          ).then((result) => {
             if (result.validation) {
               resolve();
             } else {
@@ -128,6 +128,7 @@ export default {
       }
     },
     requestUpload(option) {
+      this.$emit("request-upload", option);
       return this.upload(option);
     },
     successUpload(response, file, fileList) {
@@ -135,7 +136,7 @@ export default {
       // 当没有文件处于准备或者上传中状态时, 即本次批量上传最后一次回调, 则同步数据
       if (
         !fileList.some(
-          file => file.status === "ready" || file.status === "uploading"
+          (file) => file.status === "ready" || file.status === "uploading"
         )
       ) {
         // 把上传成功的文件同步出去,并且只保留name和url, url替换成外网地址, uid和status在这里无法去除, 因为fileList同步后, el-upload组件又会watch并赋值这两属性, 如果后端要求去除, 则只能在最终表单提交时处理
@@ -151,7 +152,7 @@ export default {
                     file.response,
                     this.resPathOfUrl,
                     file.url
-                  )
+                  ),
                 });
               } else {
                 accumulator.push(file);
@@ -171,7 +172,7 @@ export default {
     },
     previewUpload(file) {
       window.open(file.url);
-    }
-  }
+    },
+  },
 };
 </script>
