@@ -7,6 +7,7 @@
     :http-request="requestUpload"
     :on-success="successUpload"
     :on-remove="removeUpload"
+    :before-remove="beforeRemoveUpload"
     :on-preview="onPreview || previewUpload"
     :accept="accept"
     :drag="drag"
@@ -164,6 +165,29 @@ export default {
       }
       this.$emit("success-upload", { response, file, fileList });
       this.$emit("finish-upload");
+    },
+    beforeRemoveUpload(file, fileList) {
+      if (this.$refs.upload) {
+        const refUpload = this.$refs.upload;
+        const refUploadInner = refUpload.$refs["upload-inner"];
+
+        const reqs = refUploadInner.reqs;
+        if (file) {
+          let uid = file;
+          if (file.uid) uid = file.uid;
+          if (reqs[uid] && reqs[uid].abort) {
+            reqs[uid].abort();
+          }
+        } else {
+          Object.keys(reqs).forEach((uid) => {
+            if (reqs[uid] && reqs[uid].abort) reqs[uid].abort();
+            delete reqs[uid];
+          });
+        }
+        fileList.splice(fileList.indexOf(file), 1);
+        this.$refs.upload.onRemove(file, fileList);
+      }
+      return false;
     },
     removeUpload(file, fileList) {
       this.elFileList = fileList;
