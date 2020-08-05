@@ -53,6 +53,11 @@ export default {
       type: Function,
       default: undefined,
     },
+    // size 单位KB，默认undefined，文件使用默认限制大小，如果不限制大小则传0
+    size: {
+      type: Number,
+      default: undefined,
+    },
     // 图片类型宽度高度限制，默认不限制
     imageDimensions: {
       validator(value) {
