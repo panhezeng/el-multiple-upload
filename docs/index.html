@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>el-multiple-upload</title>
-    <!-- 引入样式 -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/element-ui@latest/lib/theme-chalk/index.css"
-    />
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <script>(function () {
+  if (location.search) {
+    var paramName = "?spa_redirect=";
+    if (location.search.indexOf(paramName) !== -1) {
+      var url =
+        "/el-multiple-upload" +
+        decodeURIComponent(location.search.replace(paramName, ""));
+      // console.log(url);
+      history.replaceState(null, null, url);
+    }
+  }
+})();
+</script>
+   <script type="module" crossorigin src="./assets/index.aa0935a8.js"></script>
+    <link rel="stylesheet" href="./assets/index.c85c68cc.css">
   </head>
   <body>
     <div id="app"></div>
-    <script src="//polyfill.alicdn.com/polyfill.min.js?features=default,es2015,es2016,es2017,es2018,fetch,RegeneratorRuntime"></script>
-    <!-- 引入组件库 -->
-    <script src="https://cdn.jsdelivr.net/combine/npm/vue@latest/dist/vue.min.js,npm/element-ui@latest/lib/index.js"></script>
-    <!--<script src="/dist/el-multiple-upload.min.js"></script>-->
-    <script src="./example.js"></script>
+    
   </body>
 </html>

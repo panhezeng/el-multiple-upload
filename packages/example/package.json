@@ -1,0 +1,33 @@
+{
+  "name": "@panhezeng/el-multiple-upload-example",
+  "version": "4.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build && node scripts/build.mjs",
+    "serve": "vite preview",
+    "lint": "cross-env NODE_ENV=production eslint --fix \"src*/**/*.{vue,js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src*/**/*.{vue,js,jsx,ts,tsx,html,css,less,md,json}\""
+  },
+  "dependencies": {
+    "@panhezeng/el-multiple-upload": "^4.0.0",
+    "element-plus": "^2.1.7",
+    "vue": "^3.2.31"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "@vitejs/plugin-vue": "^2.2.4",
+    "@vue/compiler-sfc": "^3.2.31",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.12.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "prettier": "^2.6.1",
+    "typescript": "^4.6.3",
+    "vite": "^2.8.6",
+    "vue-tsc": "^0.33.9",
+    "zx": "^6.0.7"
+  }
+}
