@@ -9,7 +9,7 @@
 
 ## 说明
 
-基于 element-ui 的 el-upload 组件的进一步封装，功能更单一，就是上传单个文件，增加常用功能，比如，检查校验，预览，删除，编辑等
+基于 element-ui 的 el-upload 组件的进一步封装，功能更单一，就是上传多个文件，增加常用功能，比如，检查校验，预览，删除，编辑等
 
 首先请按 element-ui 官方文档安装 element-ui，确保能正常使用 element-ui
 
@@ -33,7 +33,6 @@ import { defineAsyncComponent } from "vue";
 const ElMultipleUpload = defineAsyncComponent(() =>
   import("@panhezeng/el-multiple-upload")
 );
-import "@panhezeng/el-multiple-upload/dist/style.css";
 export default {
   components: { ElMultipleUpload },
 };
@@ -45,7 +44,6 @@ export default {
 ```vue
 <script>
 import ElMultipleUpload from "@panhezeng/el-multiple-upload";
-import "@panhezeng/el-multiple-upload/dist/style.css";
 export default {
   components: { ElMultipleUpload },
 };
@@ -59,10 +57,6 @@ export default {
   rel="stylesheet"
   href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"
 />
-<link
-  rel="stylesheet"
-  href="//cdn.jsdelivr.net/npm/@panhezeng/el-multiple-upload/dist/style.css"
-/>
 <script src="//cdn.jsdelivr.net/combine/npm/vue@~3/dist/vue.global.min.js,npm/element-plus,npm/@panhezeng/el-multiple-upload/dist/el-multiple-upload.umd.js"></script>
 
 export default { components: { ElMultipleUpload: window.ElMultipleUpload }, };
@@ -74,7 +68,6 @@ export default { components: { ElMultipleUpload: window.ElMultipleUpload }, };
 import { createApp } from "vue";
 import App from "./App.vue";
 import ElMultipleUpload from "@panhezeng/el-multiple-upload";
-import "@panhezeng/el-multiple-upload/dist/style.css";
 const app = createApp(App);
 app.use(ElMultipleUpload);
 app.mount("#app");
