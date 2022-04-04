@@ -64,8 +64,7 @@
   },
   "peerDependencies": {
     "@panhezeng/utils": "^2.1.4",
-    "element-plus": "^2.1.7",
-    "vue": "^3.2.31"
+    "element-plus": "^2.1.7"
   },
   "engines": {
     "node": ">=14",
