@@ -1,6 +1,6 @@
 {
   "name": "@panhezeng/el-multiple-upload-example",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "format": "prettier --write \"src*/**/*.{vue,js,jsx,ts,tsx,html,css,less,md,json}\""
   },
   "dependencies": {
-    "@panhezeng/el-multiple-upload": "^4.0.2",
+    "@panhezeng/el-multiple-upload": "^4.0.3",
     "element-plus": "^2.1.7",
     "vue": "^3.2.31"
   },
