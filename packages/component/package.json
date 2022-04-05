@@ -27,7 +27,7 @@
     "package.json",
     "README"
   ],
-  "main": "dist/el-multiple-upload.es.js",
+  "main": "./dist/el-multiple-upload.es.js",
   "bin": {},
   "repository": {
     "type": "git",
